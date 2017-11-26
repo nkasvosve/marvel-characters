@@ -36,6 +36,3 @@ e.g
 
 http://localhost:8080/services/characters?wsdl
 
-
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home
-
