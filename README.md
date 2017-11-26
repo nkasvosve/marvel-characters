@@ -25,9 +25,6 @@ and the Swagger specification at:
 http://localhost:8080/v2/api-docs
 
 
-FYI: You need and internet connection
-
-
 SOAP Web Services:
 
 Soap endpoints are published on : http://localhost:8080/services
