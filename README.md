@@ -1,14 +1,6 @@
-If you are running the application from an IDE, you should add environment variable GOOGLE_API_KEY to the IDE
-of choice and set it to the Google API Key.
+This application serves Marvel character IDs (database IDs).
 
-If you are running on the command line, you need to export the
-Google API Key as follows
-
-export GOOGLE_API_KEY=XYZ
-
-where XYZ is the key. This export is only needed if you need to call the
-
-/characters/{id}/powers?languagCode=XYZ endpoint
+It alse serves the character details based on the database ID.
 
 To run the application, cd into the marvel-character-service folder
 
