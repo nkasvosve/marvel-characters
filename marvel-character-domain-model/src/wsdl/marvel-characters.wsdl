@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="MarvelCharacterService" targetNamespace="http://www.acme.com/ws/characters/services"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:model="http://www.acme.com/ws/characters/model"
+                  xmlns:services="http://www.acme.com/ws/characters/services"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types>
+
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified"
+                   elementFormDefault="qualified">
+            <xs:import namespace="http://www.acme.com/ws/characters/model"
+                       schemaLocation="marvel-characters.xsd"/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name="marvelCharacterRequest">
+        <wsdl:part name="parameters" element="model:marvelCharacterRequest"/>
+    </wsdl:message>
+    <wsdl:message name="marvelCharacterResponse">
+        <wsdl:part name="parameters" element="model:marvelCharacterResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="marvelCharactersRequest">
+        <wsdl:part name="parameters" element="model:marvelCharactersRequest"/>
+    </wsdl:message>
+    <wsdl:message name="marvelCharactersResponse">
+        <wsdl:part name="parameters" element="model:marvelCharactersResponse"/>
+    </wsdl:message>
+
+    <wsdl:message name="BusinessFault">
+        <wsdl:part name="BusinessFault" element="model:BusinessFault"/>
+    </wsdl:message>
+
+    <wsdl:portType name="IMarvelCharacterService">
+        <wsdl:operation name="requestMarvelCharacterDetails">
+            <wsdl:input name="marvelCharacterRequest" message="services:marvelCharacterRequest"/>
+            <wsdl:output name="marvelCharacterResponse" message="services:marvelCharacterResponse"/>
+            <wsdl:fault name="businesssFault" message="services:BusinessFault"/>
+        </wsdl:operation>
+        <wsdl:operation name="requestMarvelCharacters">
+            <wsdl:input name="marvelCharactersRequest" message="services:marvelCharactersRequest"/>
+            <wsdl:output name="marvelCharactersResponse" message="services:marvelCharactersResponse"/>
+            <wsdl:fault name="businesssFault" message="services:BusinessFault"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="marvelCharacterServiceSoapBinding" type="services:IMarvelCharacterService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+        <wsdl:operation name="requestMarvelCharacterDetails">
+            <soap:operation soapAction="http://localhost:8080/services/characters/requestMarvelCharacterDetails" style="document"/>
+            <wsdl:input name="marvelCharacterRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="marvelCharacterResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businesssFault">
+                <soap:body use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+
+        <wsdl:operation name="requestMarvelCharacters">
+            <soap:operation soapAction="http://localhost:8080/services/characters/requestMarvelCharacters" style="document"/>
+            <wsdl:input name="marvelCharactersRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="marvelCharactersResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="businesssFault">
+                <soap:body use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="marvelCharacterService">
+        <wsdl:port name="MarvelCharacterServiceSoapBindingImplPort"
+                   binding="services:marvelCharacterServiceSoapBinding">
+            <soap:address location="http://localhost:9090/hello"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

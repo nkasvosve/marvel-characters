@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+           jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.1"
+           xmlns:tns="http://www.acme.com/ws/characters/model" attributeFormDefault="unqualified"
+           elementFormDefault="qualified" targetNamespace="http://www.acme.com/ws/characters/model">
+
+    <xs:complexType name="WSBusinessFault">
+        <xs:sequence>
+            <xs:element name="Code" minOccurs="1" maxOccurs="1" nillable="false" type="tns:ErrorCode"/>
+            <xs:element name="UserReadableReason" minOccurs="1" maxOccurs="1" nillable="false" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="BusinessFault" type="tns:WSBusinessFault"/>
+
+    <xs:simpleType name="ErrorCode">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ERROR_NOT_AVAILABLE"/>
+            <xs:enumeration value="ERROR_INVALID_CONTENT"/>
+            <xs:enumeration value="ERROR_INVALID_REQUEST"/>
+            <xs:enumeration value="ERROR_SECURITY"/>
+            <xs:enumeration value="ERROR_INTERNAL"/>
+            <xs:enumeration value="ERROR_NOT_IMPLEMENTED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:element name="marvelCharactersRequest">
+        <xs:complexType>
+            <xs:sequence/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="marvelCharactersResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:int" name="id" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="marvelCharacterRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:long" name="id"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="marvelCharacterResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="xs:string" name="description"/>
+                <xs:element type="xs:string" name="name"/>
+                <xs:element type="xs:int" name="resourceId"/>
+                <xs:element name="thumbnail">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:string" name="extension"/>
+                            <xs:element type="xs:anyURI" name="path"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="urls">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element type="xs:string" name="type"/>
+                                        <xs:element type="xs:anyURI" name="url"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

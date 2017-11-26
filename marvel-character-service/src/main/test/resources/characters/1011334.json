@@ -1,0 +1,23 @@
+{
+  "name": "3-D Man",
+  "description": "",
+  "thumbnail": {
+    "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+    "extension": "jpg"
+  },
+  "urls": [
+    {
+      "url": "http://marvel.com/characters/74/3-d_man?utm_campaign=apiRef&utm_source=dc080489f9a17158ad3ce56eefc68677",
+      "type": "detail"
+    },
+    {
+      "url": "http://marvel.com/universe/3-D_Man_(Chandler)?utm_campaign=apiRef&utm_source=dc080489f9a17158ad3ce56eefc68677",
+      "type": "wiki"
+    },
+    {
+      "url": "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=dc080489f9a17158ad3ce56eefc68677",
+      "type": "comiclink"
+    }
+  ],
+  "resourceId": 1011334
+}
