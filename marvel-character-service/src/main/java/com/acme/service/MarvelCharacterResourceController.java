@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,7 +67,7 @@ public class MarvelCharacterResourceController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    @ApiOperation(value = "Returns list of all marvel character ids")
+    @ApiOperation(value = "Returns list of all marvel character IDs")
     public ResponseEntity<?> fetchCharacters() {
 
         List<Long> charactersIds = marvelCharacterService.findAllCharacterIds();
@@ -80,30 +81,30 @@ public class MarvelCharacterResourceController {
 
     @ApiOperation(value = "PATCH is not yet implemented")
     @RequestMapping(method = RequestMethod.PATCH)
-    public String patchCharacter() {
-        throw new IllegalArgumentException(
-                "HTTP.PATCH method is not yet implemented in this resource");
+    public ResponseEntity<?> patchCharacter() {
+        return new ResponseEntity<>(
+                new HttpEntity<>("HTTP.PATCH method is not yet implemented in this resource"), HttpStatus.NOT_IMPLEMENTED);
     }
 
     @ApiOperation(value = "DELETE is not yet implemented")
     @RequestMapping(method = RequestMethod.DELETE)
-    public String deleteCharacter() {
-        throw new IllegalArgumentException(
-                "HTTP.DELETE method is not yet implemented in this resource");
+    public ResponseEntity<?> deleteCharacter() {
+        return new ResponseEntity<>(
+                new HttpEntity<>("HTTP.DELETE method is not yet implemented in this resource"), HttpStatus.NOT_IMPLEMENTED);
     }
 
     @ApiOperation(value = "POST is not yet implemented")
     @RequestMapping(method = RequestMethod.POST)
-    public String createCharacter() {
-        throw new IllegalArgumentException(
-                "HTTP.POST method is not yet implemented in this resource");
+    public ResponseEntity<?> createCharacter() {
+        return new ResponseEntity<>(
+                new HttpEntity<>("HTTP.POST method is not yet implemented in this resource"), HttpStatus.NOT_IMPLEMENTED);
     }
 
     @ApiOperation(value = "PUT is not yet implemented")
     @RequestMapping(method = RequestMethod.PUT)
-    public String updateCharacter() {
-        throw new IllegalArgumentException(
-                "HTTP.PUT method is not yet implemented in this resource");
+    public ResponseEntity<?> updateCharacter() {
+        return new ResponseEntity<>(
+                new HttpEntity<>("HTTP.PUT method is not yet implemented in this resource"), HttpStatus.NOT_IMPLEMENTED);
     }
 
     private static final Logger LOG =
